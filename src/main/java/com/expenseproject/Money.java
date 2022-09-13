@@ -3,16 +3,16 @@ package com.expenseproject;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Expense {
+public class Money {
 
     private String name = "";
     private BigDecimal amount = new BigDecimal(0);
     private BigDecimal frequency = new BigDecimal(0);
 
-    public Expense() {
+    public Money() {
     }
 
-    public Expense(String name, BigDecimal frequency, BigDecimal amount) {
+    public Money(String name, BigDecimal frequency, BigDecimal amount) {
         this.name = name;
         this.frequency = frequency;
         this.amount = amount;
@@ -42,16 +42,18 @@ public class Expense {
         this.frequency = frequency;
     }
 
-    public void addExpenseToList(String name, BigDecimal frequency, BigDecimal amount, List<Expense> expenseList) {
-        Expense expense = new Expense(name, frequency, amount);
-        expenseList.add(expense);
+    public void addMoneyToList(String name, BigDecimal frequency, BigDecimal amount, List<Money> moneyList) {
+        Money money = new Money(name, frequency, amount);
+        moneyList.add(money);
     }
 
     public String toString() {
-        return getName() + ": $" + getAmount() + " -- " + getFrequency() + " times a month";
+        return getName() + ": $" + getAmount() + " -- " + getFrequency() + " time(s) a month";
     }
 
-    public void getExpenses(List<Expense> expenseList) {
-        expenseList.forEach(expense -> System.out.println(expense.toString()));
+    public void getMoniesList(List<Money> moneyList) {
+        moneyList.forEach(money -> System.out.println(money.toString()));
     }
+
+    //Create totalPerMonth, PerYear, Per Week, Per Day?
 }
