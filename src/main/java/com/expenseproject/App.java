@@ -1,3 +1,5 @@
+package com.expenseproject;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,8 @@ public class App {
                 }
                 else if(choice == 2) {
                     System.out.println("What is the name of your expense?");
-                    String expenseName = input.next().trim();
+                    String expenseName = input.nextLine().trim(); // fix this
+
                     System.out.println("How many times does this expense occur per month?");
                     System.out.println("Please enter a number value: ");
                     BigDecimal frequency = input.nextBigDecimal();
@@ -44,9 +47,9 @@ public class App {
                 }
             }
         }
-        catch (Exception e) {
-            System.out.println("An error has occurred. Please read instructions carefully and try again.");
-        }
+//        catch (Exception e) {
+//            System.out.println("An error has occurred. Please read instructions carefully and try again.");
+//        }
     }
 
 }
