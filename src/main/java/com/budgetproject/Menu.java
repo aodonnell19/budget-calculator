@@ -1,4 +1,4 @@
-package com.expenseproject;
+package com.budgetproject;
 
 public class Menu {
 
