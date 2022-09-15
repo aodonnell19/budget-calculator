@@ -7,22 +7,19 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        Menu menu = new Menu();
         Money expense = new Money();
         Money income = new Money();
         List<Money> expenseList = new ArrayList<>();
         List<Money> incomeList = new ArrayList<>();
 
         try (Scanner input = new Scanner(System.in)){
+            Menu menu = new Menu(input);
             while(true) {
                 menu.getMainMenu();
-                double choice = Double.parseDouble(input.nextLine());
-
-                if (choice == 1) {
+                if (menu.getChoice() == 1) {
                     while (true) {
                         menu.getAddMenu();
-                        double addChoice = Double.parseDouble(input.nextLine());
-                        if (addChoice == 1) {
+                        if (menu.getChoice() == 1) {
                             System.out.println("What is the name of your income?");
                             String incomeName = input.nextLine().trim();
                             System.out.println("How many times does this income occur per month?");
@@ -33,7 +30,7 @@ public class App {
                             input.nextLine();
                             expense.addMoneyToList(incomeName, frequency, amount, incomeList);
                         }
-                        else if (addChoice == 2) {
+                        else if (menu.getChoice() == 2) {
                             System.out.println("What is the name of your expense?");
                             String expenseName = input.nextLine().trim();
                             System.out.println("How many times does this expense occur per month?");
@@ -44,7 +41,7 @@ public class App {
                             input.nextLine();
                             expense.addMoneyToList(expenseName, frequency, amount, expenseList);
                         }
-                        else if (addChoice == 3) {
+                        else if (menu.getChoice() == 3) {
                             break;
                         }
                         else {
@@ -52,20 +49,19 @@ public class App {
                         }
                     }
                 }
-                else if (choice == 2) {
+                else if (menu.getChoice() == 2) {
                     menu.getListMenu();
-                    double listChoice = Double.parseDouble(input.nextLine());
                     System.out.println();
                     System.out.println("**********************************");
-                    if (listChoice == 1) {
+                    if (menu.getChoice() == 1) {
                         System.out.println("Income:");
                         income.getMoniesList(incomeList);
                     }
-                    else if (listChoice == 2) {
+                    else if (menu.getChoice() == 2) {
                         System.out.println("Expenses:");
                         expense.getMoniesList(expenseList);
                     }
-                    else if (listChoice == 3) {
+                    else if (menu.getChoice() == 3) {
                         System.out.println("Income:");
                         income.getMoniesList(incomeList);
                         System.out.println();
@@ -78,10 +74,10 @@ public class App {
                     System.out.println("**********************************");
                     System.out.println();
                 }
-                else if (choice == 3) {
+                else if (menu.getChoice() == 3) {
 
                 }
-                else if (choice == 4) {
+                else if (menu.getChoice() == 4) {
                     break;
                 }
                 else {
