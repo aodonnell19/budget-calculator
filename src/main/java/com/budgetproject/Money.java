@@ -56,4 +56,11 @@ public class Money {
     }
 
     //Create totalPerMonth, PerYear, Per Week, Per Day?
+    public BigDecimal financialBreakdown(BigDecimal timeAmount, List<Money> moneyList) {
+        BigDecimal total = new BigDecimal(0);
+        for (Money money:moneyList) {
+            total = total.add(money.getAmount().multiply(money.getFrequency()));
+        }
+        return total.divide(timeAmount);
+    }
 }

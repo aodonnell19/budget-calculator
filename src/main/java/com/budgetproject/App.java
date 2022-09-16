@@ -7,8 +7,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        Money expense = new Money();
-        Money income = new Money();
+        Money money = new Money();
         List<Money> expenseList = new ArrayList<>();
         List<Money> incomeList = new ArrayList<>();
 
@@ -20,26 +19,12 @@ public class App {
                     while (true) {
                         menu.getAddMenu();
                         if (menu.getChoice() == 1) {
-                            System.out.println("What is the name of your income?");
-                            String incomeName = input.nextLine().trim();
-                            System.out.println("How many times does this income occur per month?");
-                            System.out.println("Please enter a number value: ");
-                            BigDecimal frequency = input.nextBigDecimal();
-                            System.out.println("What is the amount of the income as a number?");
-                            BigDecimal amount = input.nextBigDecimal();
-                            input.nextLine();
-                            expense.addMoneyToList(incomeName, frequency, amount, incomeList);
+                            menu.getAddIncomeMenu();
+                            money.addMoneyToList(menu.getNameInput(), menu.getFrequencyInput(), menu.getAmountInput(), incomeList);
                         }
                         else if (menu.getChoice() == 2) {
-                            System.out.println("What is the name of your expense?");
-                            String expenseName = input.nextLine().trim();
-                            System.out.println("How many times does this expense occur per month?");
-                            System.out.println("Please enter a number value: ");
-                            BigDecimal frequency = input.nextBigDecimal();
-                            System.out.println("What is the amount of the expense as a number?");
-                            BigDecimal amount = input.nextBigDecimal();
-                            input.nextLine();
-                            expense.addMoneyToList(expenseName, frequency, amount, expenseList);
+                            menu.getAddExpenseMenu();
+                            money.addMoneyToList(menu.getNameInput(), menu.getFrequencyInput(), menu.getAmountInput(), expenseList);
                         }
                         else if (menu.getChoice() == 3) {
                             break;
@@ -50,32 +35,57 @@ public class App {
                     }
                 }
                 else if (menu.getChoice() == 2) {
-                    menu.getListMenu();
-                    System.out.println();
-                    System.out.println("**********************************");
-                    if (menu.getChoice() == 1) {
-                        System.out.println("Income:");
-                        income.getMoniesList(incomeList);
-                    }
-                    else if (menu.getChoice() == 2) {
-                        System.out.println("Expenses:");
-                        expense.getMoniesList(expenseList);
-                    }
-                    else if (menu.getChoice() == 3) {
-                        System.out.println("Income:");
-                        income.getMoniesList(incomeList);
+                    while (true) {
+                        menu.getListMenu();
                         System.out.println();
-                        System.out.println("Expenses:");
-                        expense.getMoniesList(expenseList);
+                        System.out.println("**********************************");
+                        if (menu.getChoice() == 1) {
+                            System.out.println("Income:");
+                            money.getMoniesList(incomeList);
+                        }
+                        else if (menu.getChoice() == 2) {
+                            System.out.println("Expenses:");
+                            money.getMoniesList(expenseList);
+                        }
+                        else if (menu.getChoice() == 3) {
+                            System.out.println("Income:");
+                            money.getMoniesList(incomeList);
+                            System.out.println();
+                            System.out.println("Expenses:");
+                            money.getMoniesList(expenseList);
+                        }
+                        else if (menu.getChoice() == 4) {
+                            break;
+                        }
+                        else {
+                            System.out.println("Please enter valid input.");
+                        }
+                        System.out.println("**********************************");
+                        System.out.println();
                     }
-                    else {
-                        System.out.println("Please enter valid input.");
-                    }
-                    System.out.println("**********************************");
-                    System.out.println();
                 }
                 else if (menu.getChoice() == 3) {
+                    while (true) {
+                        menu.getFinancialBreakdownMenu();
+                        if (menu.getChoice() == 1) {
 
+                        }
+                        else if (menu.getChoice() == 2) {
+
+                        }
+                        else if (menu.getChoice() == 3) {
+
+                        }
+                        else if (menu.getChoice() == 4) {
+
+                        }
+                        else if (menu.getChoice() == 5) {
+                            break;
+                        }
+                        else {
+                            System.out.println("Please enter valid input.");
+                        }
+                    }
                 }
                 else if (menu.getChoice() == 4) {
                     break;
