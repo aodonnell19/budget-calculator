@@ -113,5 +113,6 @@ public class Menu {
         System.out.println("4) Yearly");
         System.out.println("5) Back");
         setChoice(Double.parseDouble(input.nextLine()));
+        System.out.println();
     }
 }

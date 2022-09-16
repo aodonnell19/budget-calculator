@@ -1,6 +1,7 @@
 package com.budgetproject;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class Money {
@@ -55,12 +56,13 @@ public class Money {
         moneyList.forEach(money -> System.out.println(money.toString()));
     }
 
-    //Create totalPerMonth, PerYear, Per Week, Per Day?
     public BigDecimal financialBreakdown(BigDecimal timeAmount, List<Money> moneyList) {
         BigDecimal total = new BigDecimal(0);
+        BigDecimal daily = new BigDecimal(30);
         for (Money money:moneyList) {
             total = total.add(money.getAmount().multiply(money.getFrequency()));
         }
-        return total.divide(timeAmount);
+        total = total.divide(daily, 2, RoundingMode.CEILING);
+        return total.multiply(timeAmount);
     }
 }
