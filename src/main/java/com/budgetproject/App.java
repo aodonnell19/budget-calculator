@@ -10,10 +10,10 @@ public class App {
         Money money = new Money();
         List<Money> expenseList = new ArrayList<>();
         List<Money> incomeList = new ArrayList<>();
-        final BigDecimal DAILY = new BigDecimal(1);
-        final BigDecimal WEEKLY = new BigDecimal(7);
-        final BigDecimal MONTHLY = new BigDecimal(30);
-        final BigDecimal YEARLY = new BigDecimal(365);
+        final BigDecimal DAILY = new BigDecimal(7);
+        final BigDecimal WEEKLY = new BigDecimal(1);
+        final BigDecimal MONTHLY = new BigDecimal(4);
+        final BigDecimal YEARLY = new BigDecimal(52);
 
         try (Scanner input = new Scanner(System.in)){
             Menu menu = new Menu(input);
@@ -72,24 +72,24 @@ public class App {
                     while (true) {
                         menu.getFinancialBreakdownMenu();
                         if (menu.getChoice() == 1) {
-                            System.out.println("Daily income: $" + money.financialBreakdown(DAILY, incomeList));
+                            System.out.println("Daily income: $" + money.divideMonthly(DAILY, incomeList));
                             System.out.println();
-                            System.out.println("Daily expense: $" + money.financialBreakdown(DAILY, expenseList));
+                            System.out.println("Daily expense: $" + money.divideMonthly(DAILY, expenseList));
                         }
                         else if (menu.getChoice() == 2) {
-                            System.out.println("Weekly income: $" + money.financialBreakdown(WEEKLY, incomeList));
+                            System.out.println("Weekly income: $" + money.divideMonthly(WEEKLY, incomeList));
                             System.out.println();
-                            System.out.println("Weekly expense: $" + money.financialBreakdown(WEEKLY, expenseList));
+                            System.out.println("Weekly expense: $" + money.divideMonthly(WEEKLY, expenseList));
                         }
                         else if (menu.getChoice() == 3) {
-                            System.out.println("Monthly income: $" + money.financialBreakdown(MONTHLY, incomeList));
+                            System.out.println("Monthly income: $" + money.multiplyMonthly(MONTHLY, incomeList));
                             System.out.println();
-                            System.out.println("Monthly expense: $" + money.financialBreakdown(MONTHLY, expenseList));
+                            System.out.println("Monthly expense: $" + money.multiplyMonthly(MONTHLY, expenseList));
                         }
                         else if (menu.getChoice() == 4) {
-                            System.out.println("Yearly income: $" + money.financialBreakdown(YEARLY, incomeList));
+                            System.out.println("Yearly income: $" + money.multiplyMonthly(YEARLY, incomeList));
                             System.out.println();
-                            System.out.println("Yearly expense: $" + money.financialBreakdown(YEARLY, expenseList));
+                            System.out.println("Yearly expense: $" + money.multiplyMonthly(YEARLY, expenseList));
                         }
                         else if (menu.getChoice() == 5) {
                             break;
@@ -108,7 +108,7 @@ public class App {
             }
         }
         catch (Exception e) {
-//            System.out.println("An error has occurred. Please read instructions carefully and try again.");
+            System.out.println("An error has occurred. Please read instructions carefully and try again.");
         }
     }
 }
