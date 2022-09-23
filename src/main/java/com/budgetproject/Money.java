@@ -76,13 +76,13 @@ public class Money {
         return total;
     }
 
-//    public BigDecimal financialBreakdown(BigDecimal timeAmount, List<Money> moneyList) {
-//        BigDecimal total = new BigDecimal(0);
-//        BigDecimal daily = new BigDecimal(30);
-//        for (Money money:moneyList) {
-//            total = total.add(money.getAmount().multiply(money.getFrequency()));
-//        }
-//        total = total.divide(daily, 2, RoundingMode.CEILING);
-//        return total.multiply(timeAmount);
-//    }
+    public BigDecimal financialBreakdown(BigDecimal timeAmount, List<Money> moneyList) {
+        BigDecimal total = new BigDecimal(0);
+        BigDecimal weekly = new BigDecimal(4);
+        for (Money money:moneyList) {
+            total = total.add(money.getAmount().multiply(money.getFrequency()));
+        }
+        total = total.divide(weekly, 2, RoundingMode.CEILING);
+        return total.multiply(timeAmount);
+    }
 }
