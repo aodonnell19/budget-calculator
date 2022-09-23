@@ -72,24 +72,44 @@ public class App {
                     while (true) {
                         menu.getFinancialBreakdownMenu();
                         if (menu.getChoice() == 1) {
-                            System.out.println("Daily income: $" + money.divideMonthly(DAILY, incomeList));
+                            BigDecimal totalDailyIncome = money.financialBreakdown(DAILY, incomeList);
+                            BigDecimal totalDailyExpense = money.financialBreakdown(DAILY, expenseList);
+                            System.out.println("Daily income: $" + totalDailyIncome);
                             System.out.println();
-                            System.out.println("Daily expense: $" + money.divideMonthly(DAILY, expenseList));
+                            System.out.println("Daily expense: $" + totalDailyExpense);
+                            System.out.println();
+                            System.out.println("Yearly net income: $" + totalDailyIncome.subtract(totalDailyExpense));
+                            System.out.println();
                         }
                         else if (menu.getChoice() == 2) {
-                            System.out.println("Weekly income: $" + money.financialBreakdown(WEEKLY, incomeList));
+                            BigDecimal totalWeeklyIncome = money.financialBreakdown(WEEKLY, incomeList);
+                            BigDecimal totalWeeklyExpense = money.financialBreakdown(WEEKLY, expenseList);
+                            System.out.println("Weekly income: $" + totalWeeklyIncome);
                             System.out.println();
-                            System.out.println("Weekly expense: $" + money.financialBreakdown(WEEKLY, expenseList));
+                            System.out.println("Weekly expense: $" + totalWeeklyExpense);
+                            System.out.println();
+                            System.out.println("Yearly net income: $" + totalWeeklyIncome.subtract(totalWeeklyExpense));
+                            System.out.println();
                         }
                         else if (menu.getChoice() == 3) {
-                            System.out.println("Monthly income: $" + money.financialBreakdown(MONTHLY, incomeList));
+                            BigDecimal totalMonthlyIncome = money.financialBreakdown(MONTHLY, incomeList);
+                            BigDecimal totalMonthlyExpense = money.financialBreakdown(MONTHLY, expenseList);
+                            System.out.println("Monthly income: $" + totalMonthlyIncome);
                             System.out.println();
-                            System.out.println("Monthly expense: $" + money.financialBreakdown(MONTHLY, expenseList));
+                            System.out.println("Monthly expense: $" + totalMonthlyExpense);
+                            System.out.println();
+                            System.out.println("Yearly net income: $" + totalMonthlyIncome.subtract(totalMonthlyExpense));
+                            System.out.println();
                         }
                         else if (menu.getChoice() == 4) {
-                            System.out.println("Yearly income: $" + money.financialBreakdown(YEARLY, incomeList));
+                            BigDecimal totalYearlyIncome = money.financialBreakdown(YEARLY, incomeList);
+                            BigDecimal totalYearlyExpense = money.financialBreakdown(YEARLY, expenseList);
+                            System.out.println("Yearly income: $" + totalYearlyIncome);
                             System.out.println();
-                            System.out.println("Yearly expense: $" + money.financialBreakdown(YEARLY, expenseList));
+                            System.out.println("Yearly expense: $" + totalYearlyExpense);
+                            System.out.println();
+                            System.out.println("Yearly net income: $" + totalYearlyIncome.subtract(totalYearlyExpense));
+                            System.out.println();
                         }
                         else if (menu.getChoice() == 5) {
                             break;

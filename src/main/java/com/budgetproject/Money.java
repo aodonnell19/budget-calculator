@@ -56,33 +56,21 @@ public class Money {
         moneyList.forEach(money -> System.out.println(money.toString()));
     }
 
-    // Try weekly calculations for more accuracy
-
-    public BigDecimal divideMonthly(BigDecimal timeAmount, List<Money> moneyList) {
-        BigDecimal total = new BigDecimal(0);
-        for (Money money:moneyList) {
-            total = total.add(money.getAmount().multiply(money.getFrequency()).divide(timeAmount, 2, RoundingMode.CEILING));
-        }
-
-        return total;
-    }
-
-    public BigDecimal multiplyMonthly(BigDecimal timeAmount, List<Money> moneyList) {
-        BigDecimal total = new BigDecimal(0);
-        for (Money money:moneyList) {
-            total = total.add(money.getAmount().multiply(money.getFrequency()).multiply(timeAmount));
-        }
-
-        return total;
-    }
-
     public BigDecimal financialBreakdown(BigDecimal timeAmount, List<Money> moneyList) {
         BigDecimal total = new BigDecimal(0);
         BigDecimal weekly = new BigDecimal(4);
-        for (Money money:moneyList) {
-            total = total.add(money.getAmount().multiply(money.getFrequency()));
+        BigDecimal daily = new BigDecimal(30);
+        if (timeAmount.equals(daily)) {
+            for (Money money:moneyList) {
+                total = total.add(money.getAmount().multiply(money.getFrequency()).divide(timeAmount, 2, RoundingMode.CEILING));
+            }
         }
-        total = total.divide(weekly, 2, RoundingMode.CEILING);
-        return total.multiply(timeAmount);
+        else {
+            for (Money money:moneyList) {
+                total = total.add(money.getAmount().multiply(money.getFrequency()).divide(weekly, 2, RoundingMode.CEILING).multiply(timeAmount));
+            }
+        }
+        return total;
     }
+
 }
